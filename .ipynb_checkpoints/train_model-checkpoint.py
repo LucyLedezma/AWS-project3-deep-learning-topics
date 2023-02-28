@@ -10,6 +10,7 @@ import torchvision.transforms as transforms
 import smdebug.pytorch as smd
 import argparse
 import os
+from PIL import ImageFile
 
 #TODO: Import dependencies for Debugging andd Profiling
 
@@ -127,6 +128,7 @@ def create_data_loaders(path, batch_size):
     This is an optional function that you may or may not need to implement
     depending on whether you need to use data loaders or not
     '''
+    ImageFile.LOAD_TRUNCATED_IMAGES = True
     transform = transforms.Compose([
             transforms.Resize((224, 224)),
             transforms.ToTensor(),
@@ -160,10 +162,10 @@ def main(args):
     TODO: Call the train function to start training your model
     Remember that you will need to set up a way to get training data from S3
     '''
-    train_loader = create_data_loaders(args['data-dir-training'], args['batch-size'])
-    validation_loader = create_data_loaders(args['data-dir-validation'], args['batch-size'])
-    test_loader = create_data_loaders(args['data-dir-test'], args['batch-size'])
-    model=train(model, train_loader, validation_loader,  loss_criterion, optimizer, args['apochs'], device,  hook)
+    train_loader = create_data_loaders(args['data_dir_training'], args['batch_size'])
+    validation_loader = create_data_loaders(args['data_dir_validation'], args['batch_size'])
+    test_loader = create_data_loaders(args['data_dir_test'], args['batch_size'])
+    model=train(model, train_loader, validation_loader,  loss_criterion, optimizer, args['epochs'], device, hook)
     
     '''
     TODO: Test the model to see its accuracy
@@ -173,7 +175,7 @@ def main(args):
     '''
     TODO: Save the trained model
     '''
-    torch.save(model, os.path.join(args['model-dir'], 'model.pth'))
+    torch.save(model, os.path.join(args['model_dir'], 'model.pth'))
 
 if __name__=='__main__':
     parser=argparse.ArgumentParser()
@@ -207,13 +209,11 @@ if __name__=='__main__':
    
 
     # Container environment
-    parser.add_argument("--hosts", type=list, default=json.loads(os.environ["SM_HOSTS"]))
-    parser.add_argument("--current-host", type=str, default=os.environ["SM_CURRENT_HOST"])
     parser.add_argument("--model-dir", type=str, default=os.environ["SM_MODEL_DIR"])
     parser.add_argument("--data-dir-training", type=str, default=os.environ["SM_CHANNEL_TRAINING"])
     parser.add_argument("--data-dir-validation", type=str, default=os.environ["SM_CHANNEL_VALIDATION"])
     parser.add_argument("--data-dir-test", type=str, default=os.environ["SM_CHANNEL_TEST"])
-    parser.add_argument("--num-gpus", type=int, default=os.environ["SM_NUM_GPUS"])
+    
     args=parser.parse_args()
     
     main(args)
