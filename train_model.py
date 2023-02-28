@@ -14,7 +14,7 @@ from PIL import ImageFile
 
 #TODO: Import dependencies for Debugging andd Profiling
 
-def test(model, test_loader, device, hook):
+def test(model, test_loader, criterion, device, hook):
     '''
     TODO: Complete this function that can take a model and a 
           testing data loader and will get the test accuray/loss of the model

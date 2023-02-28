@@ -11,7 +11,7 @@ import os
 import argparse
 from PIL import ImageFile
 
-def test(model, test_loader, device):
+def test(model, test_loader, criterion, device):
     '''
     TODO: Complete this function that can take a model and a 
           testing data loader and will get the test accuray/loss of the model
