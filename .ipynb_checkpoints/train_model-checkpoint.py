@@ -20,7 +20,7 @@ def test(model, test_loader, criterion, device, hook):
           testing data loader and will get the test accuray/loss of the model
           Remember to include any debugging/profiling hooks that you might need
     '''
-    hook.set_mode(smd.modes.EVAL)
+    hook.set_mode(smd.modes.PREDICT)
     print("Testing Model on Whole Testing Dataset")
     model.eval()
     running_loss=0
@@ -45,8 +45,7 @@ def train(model, train_loader, validation_loader, criterion, optimizer, epochs, 
     TODO: Complete this function that can take a model and
           data loaders for training and will get train the model
           Remember to include any debugging/profiling hooks that you might need
-    '''
-    hook.set_mode(smd.modes.TRAIN)
+    '''    
     best_loss=1e6
     image_dataset={'train':train_loader, 'valid':validation_loader}
     loss_counter=0
@@ -55,8 +54,10 @@ def train(model, train_loader, validation_loader, criterion, optimizer, epochs, 
         for phase in ['train', 'valid']:
             print(f"Epoch {epoch}, Phase {phase}")
             if phase=='train':
+                hook.set_mode(smd.modes.TRAIN)
                 model.train()
             else:
+                hook.set_mode(smd.modes.EVAL)
                 model.eval()
             running_loss = 0.0
             running_corrects = 0
