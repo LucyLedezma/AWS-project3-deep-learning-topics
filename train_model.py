@@ -140,8 +140,17 @@ def create_data_loaders(path, batch_size):
                                               shuffle=True,
                                              )
     return data_loader
-def model_fn(model):
-    pass
+
+def model_fn(model_dir):
+    device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
+    model = net().to(device)
+    
+    with open(os.path.join(model_dir, "model.pth"), "rb") as f:
+        checkpoint = torch.load(f , map_location =device)
+        model.load_state_dict(checkpoint)
+    model.eval()
+    return model
+
     
 def main(args):
     '''
