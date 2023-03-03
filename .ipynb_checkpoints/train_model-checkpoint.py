@@ -7,11 +7,16 @@ import torch.optim as optim
 import torchvision
 import torchvision.models as models
 import torchvision.transforms as transforms
-import smdebug.pytorch as smd
+
 import argparse
 import os
 from PIL import ImageFile
+try:
+    import smdebug.pytorch as smd
+except Exception as e:
+    print(f'The module {str(e)} had not been installed')
 
+ImageFile.LOAD_TRUNCATED_IMAGES = True
 #TODO: Import dependencies for Debugging andd Profiling
 
 def test(model, test_loader, criterion, device, hook):
@@ -128,8 +133,7 @@ def create_data_loaders(path, batch_size):
     '''
     This is an optional function that you may or may not need to implement
     depending on whether you need to use data loaders or not
-    '''
-    ImageFile.LOAD_TRUNCATED_IMAGES = True
+    '''    
     transform = transforms.Compose([
             transforms.Resize((224, 224)),
             transforms.ToTensor(),
@@ -145,11 +149,21 @@ def model_fn(model_dir):
     device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
     model = net().to(device)
     
-    with open(os.path.join(model_dir, "model.pth"), "rb") as f:
+    model_path = os.path.join(model_dir, "model.pth")
+    with open(model_path, "rb") as f:
         checkpoint = torch.load(f , map_location =device)
         model.load_state_dict(checkpoint)
+        print("The model was loaded!")
     model.eval()
     return model
+
+# def model_fn(model_dir):
+#     device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
+#     model_path = os.path.join(model_dir, "model.pth")
+#     model = torch.load(model_path)
+#     model.to(device)
+#     model.eval()
+#     return model
 
     
 def main(args):
@@ -185,7 +199,8 @@ def main(args):
     '''
     TODO: Save the trained model
     '''
-    torch.save(model, os.path.join(args['model_dir'], 'model.pth'))
+    torch.save(model.cpu().state_dict(), os.path.join(args['model_dir'], 'model.pth'))
+    #torch.save(model, os.path.join(args['model_dir'], 'model.pth'))
 
 if __name__=='__main__':
     parser=argparse.ArgumentParser()
@@ -217,7 +232,6 @@ if __name__=='__main__':
         "--lr", type=float, default=0.01, metavar="LR", help="learning rate (default: 0.01)"
     )
    
-
     # Container environment
     parser.add_argument("--model-dir", type=str, default=os.environ["SM_MODEL_DIR"])
     parser.add_argument("--data-dir-training", type=str, default=os.environ["SM_CHANNEL_TRAINING"])
