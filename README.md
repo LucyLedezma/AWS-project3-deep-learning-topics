@@ -53,10 +53,20 @@ All this configuartions were used into estimator istantiation; once it was creat
  
 ## Model Deployment
 
-In order to deploy the model, yon have to use the deploy method of the PyTorch estimator, a endpoint is going to be deployed and you can check it by opening in inferences -> endpoints in sagemaker. 
-Once the endpoint is available you can query it by loading an image in numpy.array format and passsing it to predict method of predictor object:
-    - predictor.predict(numpyImage)
+In order to deploy the model, yon have to use the deploy method of the PyTorch estimator, an endpoint is going to be deployed and you can check it by opening in inferences -> endpoints in sagemaker. 
+Once the endpoint is available you can query it by loading an image as numpy.array format and use it to predict method of predictor object:
 
+'''
+from train_model import create_data_loaders
+
+test_loader = create_data_loaders('dogImages/test', 4)
+image_loader = None
+for images,labels in test_loader:
+    break 
+
+inference = predictor.predict(images)
+'''
+#### Endpoint
 - ![alt ENDPOINT](images/endpoint.png "Enpoint")
 ## Standout Suggestions
 **TODO (Optional):** This is where you can provide information about any standout suggestions that you have attempted.
