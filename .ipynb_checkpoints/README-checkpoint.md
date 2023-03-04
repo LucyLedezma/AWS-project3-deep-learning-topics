@@ -22,7 +22,7 @@ I used resnet50, because this net is a CNN for image classification trained on a
 The hyperparameters I have finetuned was:
     - lr: Learning rate with the range value of (0.001, 0.1),
     - batch-size:  trained with the values 32, 64 and 128,
-Remember that your README should:
+
 - Screenshot of completed training jobs:
     ![alt COMPLETED_TRAINING_JOBS](images/hypt_training_jobs.png)
 - Logs metrics during the training process: path -> hypt_logs/
