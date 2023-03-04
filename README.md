@@ -24,7 +24,7 @@ The hyperparameters I have finetuned was:
     - batch-size:  trained with the values 32, 64 and 128,
 
 - Screenshot of completed training jobs:
-    ![alt COMPLETED_TRAINING_JOBS](images/hypt_training_jobs.png)
+    ![alt COMPLETED_TRAINING_JOBS](images/hypt_training_jobs.png "Completed training  jobs")
 - Logs metrics during the training process: path -> hypt_logs/
 - Tune at least two hyperparameters: Learning rate and batch_size were tuned
 - The best hyperparameters from all training jobs:
@@ -57,6 +57,6 @@ In order to deploy the model, yon have to use the deploy method of the PyTorch e
 Once the endpoint is available you can query it by loading an image in numpy.array format and passsing it to predict method of predictor object:
     - predictor.predict(numpyImage)
 
-- ![alt ENDPOINT](images/endpoint.png)
+- ![alt ENDPOINT](images/endpoint.png "Enpoint")
 ## Standout Suggestions
 **TODO (Optional):** This is where you can provide information about any standout suggestions that you have attempted.
