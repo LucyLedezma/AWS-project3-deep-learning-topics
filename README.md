@@ -24,7 +24,7 @@ The hyperparameters I have finetuned was:
     - batch-size:  trained with the values 32, 64 and 128,
 Remember that your README should:
 - Screenshot of completed training jobs:
-    ![alt text](images/hypt_training_jobs.png)
+    ![alt COMPLETED_TRAINING_JOBS](images/hypt_training_jobs.png)
 - Logs metrics during the training process: path -> hypt_logs/
 - Tune at least two hyperparameters: Learning rate and batch_size were tuned
 - The best hyperparameters from all training jobs:
@@ -33,13 +33,13 @@ Remember that your README should:
      'lr': '0.0027988564042975396'
      
 ## Debugging and Profiling
-**TODO**: Give an overview of how you performed model debugging and profiling in Sagemaker
+
 In order to understand how the model was training and its performance while this process, I have stablished the rules that includes the control of overfitting, overtraining.., I have stablished the debugger hook config with a regular expression to detect the output of the model loss, and setting the times to check it into the different phases , 
 Finally I added profiler_config to check the resources usage.
 All this configuartions were used into estimator istantiation; once it was created, the model was trained.
 
 ### Results
-**TODO**: What are the results/insights did you get by profiling/debugging your model?
+
 - The results I got in the debugging the model were the behaviuor of loss in the different phases like train, test and validation. These results   were useful to understand how well the model was created.
   - The conclusion of these results were:
     -- In this case, I only observe the shorter line of validation, but it is correspond to that its size is lower than the others.
@@ -48,15 +48,15 @@ All this configuartions were used into estimator istantiation; once it was creat
     
  - The results I got in profiling process were information that report the CPU, GPU, and Memory utilization; rules summary, bottleneck troubles, etc.
 
-**TODO** Remember to provide the profiler html/pdf file in your submission.
+
  - path to profiler-report.html: ProfilerReport/profiler-output/profiler-report.html
  
 ## Model Deployment
-**TODO**: Give an overview of the deployed model and instructions on how to query the endpoint with a sample input.
+
 In order to deploy the model, yon have to use the deploy method of the PyTorch estimator, a endpoint is going to be deployed and you can check it by opening in inferences -> endpoints in sagemaker. 
 Once the endpoint is available you can query it by loading an image in numpy.array format and passsing it to predict method of predictor object:
     - predictor.predict(numpyImage)
-**TODO** Screenshot of the deployed active endpoint in Sagemaker.
-- ![alt text](images/endpoint.png)
+
+- ![alt ENDPOINT](images/endpoint.png)
 ## Standout Suggestions
 **TODO (Optional):** This is where you can provide information about any standout suggestions that you have attempted.
