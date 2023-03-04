@@ -1,0 +1,136 @@
+timestamp,message
+1677727469807,bash: cannot set terminal process group (-1): Inappropriate ioctl for device
+1677727469807,bash: no job control in this shell
+1677727469807,"2023-03-02 03:24:27,637 sagemaker-training-toolkit INFO     Imported framework sagemaker_pytorch_container.training"
+1677727469807,"2023-03-02 03:24:27,640 sagemaker-training-toolkit INFO     No GPUs detected (normal if no gpus installed)"
+1677727469807,"2023-03-02 03:24:27,641 sagemaker-training-toolkit INFO     Failed to parse hyperparameter _tuning_objective_metric value average test loss to Json."
+1677727469807,Returning the value itself
+1677727469807,"2023-03-02 03:24:27,649 sagemaker_pytorch_container.training INFO     Block until all host DNS lookups succeed."
+1677727469807,"2023-03-02 03:24:27,652 sagemaker_pytorch_container.training INFO     Invoking user training script."
+1677727469807,"2023-03-02 03:24:27,872 sagemaker-training-toolkit INFO     No GPUs detected (normal if no gpus installed)"
+1677727469807,"2023-03-02 03:24:27,872 sagemaker-training-toolkit INFO     Failed to parse hyperparameter _tuning_objective_metric value average test loss to Json."
+1677727469807,Returning the value itself
+1677727469807,"2023-03-02 03:24:27,886 sagemaker-training-toolkit INFO     No GPUs detected (normal if no gpus installed)"
+1677727469807,"2023-03-02 03:24:27,886 sagemaker-training-toolkit INFO     Failed to parse hyperparameter _tuning_objective_metric value average test loss to Json."
+1677727469807,Returning the value itself
+1677727469807,"2023-03-02 03:24:27,897 sagemaker-training-toolkit INFO     No GPUs detected (normal if no gpus installed)"
+1677727469807,"2023-03-02 03:24:27,898 sagemaker-training-toolkit INFO     Failed to parse hyperparameter _tuning_objective_metric value average test loss to Json."
+1677727469807,Returning the value itself
+1677727469807,"2023-03-02 03:24:27,907 sagemaker-training-toolkit INFO     Invoking user script"
+1677727469808,Training Env:
+1677727469810,"{
+    ""additional_framework_parameters"": {
+        ""sagemaker_estimator_class_name"": ""PyTorch"",
+        ""sagemaker_estimator_module"": ""sagemaker.pytorch.estimator""
+    },
+    ""channel_input_dirs"": {
+        ""test"": ""/opt/ml/input/data/test"",
+        ""training"": ""/opt/ml/input/data/training"",
+        ""validation"": ""/opt/ml/input/data/validation""
+    },
+    ""current_host"": ""algo-1"",
+    ""framework_module"": ""sagemaker_pytorch_container.training:main"",
+    ""hosts"": [
+        ""algo-1""
+    ],
+    ""hyperparameters"": {
+        ""batch-size"": ""128"",
+        ""lr"": 0.005032816233806053
+    },
+    ""input_config_dir"": ""/opt/ml/input/config"",
+    ""input_data_config"": {
+        ""test"": {
+            ""TrainingInputMode"": ""File"",
+            ""S3DistributionType"": ""FullyReplicated"",
+            ""RecordWrapperType"": ""None""
+        },
+        ""training"": {
+            ""TrainingInputMode"": ""File"",
+            ""S3DistributionType"": ""FullyReplicated"",
+            ""RecordWrapperType"": ""None""
+        },
+        ""validation"": {
+            ""TrainingInputMode"": ""File"",
+            ""S3DistributionType"": ""FullyReplicated"",
+            ""RecordWrapperType"": ""None""
+        }
+    },
+    ""input_dir"": ""/opt/ml/input"",
+    ""is_master"": true,
+    ""job_name"": ""pytorch-training-230302-0302-004-515c2924"",
+    ""log_level"": 20,
+    ""master_hostname"": ""algo-1"",
+    ""model_dir"": ""/opt/ml/model"",
+    ""module_dir"": ""s3://sagemaker-us-east-1-996862753977/pytorch-training-2023-03-02-03-02-28-298/source/sourcedir.tar.gz"",
+    ""module_name"": ""hpo"",
+    ""network_interface_name"": ""eth0"",
+    ""num_cpus"": 2,
+    ""num_gpus"": 0,
+    ""output_data_dir"": ""/opt/ml/output/data"",
+    ""output_dir"": ""/opt/ml/output"",
+    ""output_intermediate_dir"": ""/opt/ml/output/intermediate"",
+    ""resource_config"": {
+        ""current_host"": ""algo-1"",
+        ""current_instance_type"": ""ml.m5.large"",
+        ""current_group_name"": ""homogeneousCluster"",
+        ""hosts"": [
+            ""algo-1""
+        ],
+        ""instance_groups"": [
+            {
+                ""instance_group_name"": ""homogeneousCluster"",
+                ""instance_type"": ""ml.m5.large"",
+                ""hosts"": [
+                    ""algo-1""
+                ]
+            }
+        ],
+        ""network_interface_name"": ""eth0""
+    },
+    ""user_entry_point"": ""hpo.py"""
+1677727469810,}
+1677727469810,Environment variables:
+1677727469810,"SM_HOSTS=[""algo-1""]"
+1677727469810,SM_NETWORK_INTERFACE_NAME=eth0
+1677727469810,"SM_HPS={""batch-size"":""128"",""lr"":0.005032816233806053}"
+1677727469810,SM_USER_ENTRY_POINT=hpo.py
+1677727469810,"SM_FRAMEWORK_PARAMS={""sagemaker_estimator_class_name"":""PyTorch"",""sagemaker_estimator_module"":""sagemaker.pytorch.estimator""}"
+1677727469810,"SM_RESOURCE_CONFIG={""current_group_name"":""homogeneousCluster"",""current_host"":""algo-1"",""current_instance_type"":""ml.m5.large"",""hosts"":[""algo-1""],""instance_groups"":[{""hosts"":[""algo-1""],""instance_group_name"":""homogeneousCluster"",""instance_type"":""ml.m5.large""}],""network_interface_name"":""eth0""}"
+1677727469810,"SM_INPUT_DATA_CONFIG={""test"":{""RecordWrapperType"":""None"",""S3DistributionType"":""FullyReplicated"",""TrainingInputMode"":""File""},""training"":{""RecordWrapperType"":""None"",""S3DistributionType"":""FullyReplicated"",""TrainingInputMode"":""File""},""validation"":{""RecordWrapperType"":""None"",""S3DistributionType"":""FullyReplicated"",""TrainingInputMode"":""File""}}"
+1677727469810,SM_OUTPUT_DATA_DIR=/opt/ml/output/data
+1677727469810,"SM_CHANNELS=[""test"",""training"",""validation""]"
+1677727469810,SM_CURRENT_HOST=algo-1
+1677727469810,SM_MODULE_NAME=hpo
+1677727469810,SM_LOG_LEVEL=20
+1677727469810,SM_FRAMEWORK_MODULE=sagemaker_pytorch_container.training:main
+1677727469810,SM_INPUT_DIR=/opt/ml/input
+1677727469811,SM_INPUT_CONFIG_DIR=/opt/ml/input/config
+1677727469811,SM_OUTPUT_DIR=/opt/ml/output
+1677727469811,SM_NUM_CPUS=2
+1677727469811,SM_NUM_GPUS=0
+1677727469811,SM_MODEL_DIR=/opt/ml/model
+1677727469811,SM_MODULE_DIR=s3://sagemaker-us-east-1-996862753977/pytorch-training-2023-03-02-03-02-28-298/source/sourcedir.tar.gz
+1677727469811,"SM_TRAINING_ENV={""additional_framework_parameters"":{""sagemaker_estimator_class_name"":""PyTorch"",""sagemaker_estimator_module"":""sagemaker.pytorch.estimator""},""channel_input_dirs"":{""test"":""/opt/ml/input/data/test"",""training"":""/opt/ml/input/data/training"",""validation"":""/opt/ml/input/data/validation""},""current_host"":""algo-1"",""framework_module"":""sagemaker_pytorch_container.training:main"",""hosts"":[""algo-1""],""hyperparameters"":{""batch-size"":""128"",""lr"":0.005032816233806053},""input_config_dir"":""/opt/ml/input/config"",""input_data_config"":{""test"":{""RecordWrapperType"":""None"",""S3DistributionType"":""FullyReplicated"",""TrainingInputMode"":""File""},""training"":{""RecordWrapperType"":""None"",""S3DistributionType"":""FullyReplicated"",""TrainingInputMode"":""File""},""validation"":{""RecordWrapperType"":""None"",""S3DistributionType"":""FullyReplicated"",""TrainingInputMode"":""File""}},""input_dir"":""/opt/ml/input"",""is_master"":true,""job_name"":""pytorch-training-230302-0302-004-515c2924"",""log_level"":20,""master_hostname"":""algo-1"",""model_dir"":""/opt/ml/model"",""module_dir"":""s3://sagemaker-us-east-1-996862753977/pytorch-training-2023-03-02-03-02-28-298/source/sourcedir.tar.gz"",""module_name"":""hpo"",""network_interface_name"":""eth0"",""num_cpus"":2,""num_gpus"":0,""output_data_dir"":""/opt/ml/output/data"",""output_dir"":""/opt/ml/output"",""output_intermediate_dir"":""/opt/ml/output/intermediate"",""resource_config"":{""current_group_name"":""homogeneousCluster"",""current_host"":""algo-1"",""current_instance_type"":""ml.m5.large"",""hosts"":[""algo-1""],""instance_groups"":[{""hosts"":[""algo-1""],""instance_group_name"":""homogeneousCluster"",""instance_type"":""ml.m5.large""}],""network_interface_name"":""eth0""},""user_entry_point"":""hpo.py""}"
+1677727469814,"SM_USER_ARGS=[""--batch-size"",""128"",""--lr"",""0.005032816233806053""]"
+1677727469814,SM_OUTPUT_INTERMEDIATE_DIR=/opt/ml/output/intermediate
+1677727469814,SM_CHANNEL_TEST=/opt/ml/input/data/test
+1677727469814,SM_CHANNEL_TRAINING=/opt/ml/input/data/training
+1677727469814,SM_CHANNEL_VALIDATION=/opt/ml/input/data/validation
+1677727469815,SM_HP_BATCH-SIZE=128
+1677727469815,SM_HP_LR=0.005032816233806053
+1677727469815,PYTHONPATH=/opt/ml/code:/opt/conda/bin:/opt/conda/lib/python36.zip:/opt/conda/lib/python3.6:/opt/conda/lib/python3.6/lib-dynload:/opt/conda/lib/python3.6/site-packages
+1677727469815,Invoking script with the following command:
+1677727469815,/opt/conda/bin/python3.6 hpo.py --batch-size 128 --lr 0.005032816233806053
+1677727469815,"{'batch_size': 128, 'test_batch_size': 1000, 'epochs': 2, 'lr': 0.005032816233806053, 'model_dir': '/opt/ml/model', 'data_dir_training': '/opt/ml/input/data/training', 'data_dir_validation': '/opt/ml/input/data/validation', 'data_dir_test': '/opt/ml/input/data/test'}"
+1677727470815,Running on Device cpu
+1677727470815,"Epoch 0, Phase train"
+1677727470815,[2023-03-02 03:24:30.166 algo-1:27 INFO utils.py:27] RULE_JOB_STOP_SIGNAL_FILENAME: None
+1677727470815,[2023-03-02 03:24:30.347 algo-1:27 INFO profiler_config_parser.py:102] Unable to find config at /opt/ml/input/config/profilerconfig.json. Profiler is disabled.
+1677727824010,"Epoch 0, Phase valid"
+1677727877226,"Epoch 1, Phase train"
+1677728227658,"Epoch 1, Phase valid"
+1677728279694,Testing Model on Whole Testing Dataset
+1677728453283,"Testing Accuracy: 55.26315789473685, Testing Loss: 1.8491200796154696"
+1677728453283,"Downloading: ""https://download.pytorch.org/models/resnet50-19c8e357.pth"" to /root/.cache/torch/hub/checkpoints/resnet50-19c8e357.pth"
+1677728453283,"#015  0%|          | 0.00/97.8M [00:00<?, ?B/s]#015 29%|██▉       | 28.2M/97.8M [00:00<00:00, 295MB/s]#015 59%|█████▉    | 57.6M/97.8M [00:00<00:00, 303MB/s]#015 89%|████████▊ | 86.5M/97.8M [00:00<00:00, 257MB/s]#015100%|██████████| 97.8M/97.8M [00:00<00:00, 262MB/s]"
+1677728453283,"2023-03-02 03:40:52,770 sagemaker-training-toolkit INFO     Reporting training SUCCESS"
